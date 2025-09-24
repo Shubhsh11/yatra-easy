@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EASYYATRA - Discover India's Hidden Treasures</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-saffron: #FF7722;
+            --secondary-green: #228B22;
+            --accent-blue: #4169E1;
+            --warm-cream: #F5F5DC;
+            --charcoal-gray: #36454F;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal-gray);
+            background-color: var(--warm-cream);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-saffron), #ff8c42);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .language-selector {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-selector:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1564507592333-c60657eea523?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .search-bar {
+            background: white;
+            padding: 1rem;
+            border-radius: 50px;
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            color: var(--charcoal-gray);
+        }
+
+        .search-bar button {
+            background: var(--primary-saffron);
+            border: none;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .search-bar button:hover {
+            background: #e66a1f;
+            transform: scale(1.05);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--charcoal-gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: var(--primary-saffron);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-saffron);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal-gray);
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Destinations Section */
+        .destinations {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .destination-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .destination-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary-saffron), var(--secondary-green));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .destination-image.rajasthan {
+            background: url('https://images.unsplash.com/photo-1599661046827-dacde6976549?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+        }
+
+        .destination-image.kerala {
+            background: url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2128&q=80') center/cover;
+        }
+
+        .destination-image.himalayan {
+            background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+        }
+
+        .destination-image.golden-triangle {
+            background: url('https://images.unsplash.com/photo-1564507592333-c60657eea523?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80') center/cover;
+        }
+
+        .destination-image.goa {
+            background: url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80') center/cover;
+        }
+
+        .destination-image.temple {
+            background: url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+        }
+
+        .destination-content {
+            padding: 1.5rem;
+        }
+
+        .destination-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal-gray);
+        }
+
+        .destination-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .destination-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-saffron);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--primary-saffron), #ff8c42);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:nth-child(2) {
+            background: linear-gradient(135deg, var(--secondary-green), #32cd32);
+        }
+
+        .service-card:nth-child(3) {
+            background: linear-gradient(135deg, var(--accent-blue), #6495ed);
+        }
+
+        .service-card:nth-child(4) {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-saffron);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            padding-top: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--charcoal-gray);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal-gray);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-saffron);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-saffron);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-saffron);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #ccc;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-bar input,
+            .search-bar button {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .destinations-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Booking Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        .close:hover {
+            color: var(--primary-saffron);
+        }
+
+        .booking-form {
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-saffron);
+        }
+
+        .btn-primary {
+            background: var(--primary-saffron);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #e66a1f;
+            transform: translateY(-2px);
+        }
+
+        /* Login Modal Styles */
+        .login-modal .modal-content {
+            max-width: 400px;
+        }
+
+        .login-form {
+            margin-top: 1rem;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h2 {
+            color: var(--charcoal-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .form-toggle {
+            display: flex;
+            background: var(--light-gray);
+            border-radius: 25px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .form-toggle button {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .form-toggle button.active {
+            background: var(--primary-saffron);
+            color: white;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .forgot-password a {
+            color: var(--primary-saffron);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .social-login {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .social-login p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary-saffron);
+            transform: translateY(-2px);
+        }
+
+        .social-btn.google {
+            color: #db4437;
+        }
+
+        .social-btn.facebook {
+            color: #3b5998;
+        }
+
+        .user-menu {
+            position: relative;
+            display: none;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-saffron);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            min-width: 150px;
+            display: none;
+            z-index: 1001;
+        }
+
+        .user-dropdown.show {
+            display: block;
+        }
+
+        .user-dropdown a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--charcoal-gray);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .user-dropdown a:hover {
+            background: var(--light-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo">EASYYATRA</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" onclick="openLoginModal()">Login</a></li>
+                <li>
+                    <select class="language-selector" id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="ta">தமிழ்</option>
+                        <option value="te">తెలుగు</option>
+                    </select>
+                </li>
+            </ul>
+            <div class="user-menu" id="userMenu">
+                <div class="user-avatar" onclick="toggleUserDropdown()" id="userAvatar">U</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="#" onclick="showProfile()">My Profile</a>
+                    <a href="#" onclick="showBookings()">My Bookings</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+            <button class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Discover India's Hidden Treasures</h1>
+                <p>Experience the incredible diversity of India with our curated travel experiences. From ancient temples to modern cities, from serene beaches to majestic mountains.</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Where do you want to go?" id="searchInput">
+                    <button onclick="searchDestination()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title fade-in">Why Choose EASYYATRA?</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Expert Local Guides</h3>
+                    <p>Our experienced local guides provide authentic insights and hidden gems that you won't find in guidebooks.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safe & Secure</h3>
+                    <p>Travel with confidence knowing that all our tours are fully insured and follow the highest safety standards.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Best Price Guarantee</h3>
+                    <p>We offer competitive prices and guarantee the best value for your money with no hidden costs.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer support team is available round the clock to assist you before, during, and after your trip.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <h2 class="section-title fade-in">Popular Destinations</h2>
+            <div class="destinations-grid">
+                <div class="destination-card fade-in" onclick="openBookingModal('Rajasthan Royal Tour')">
+                    <div class="destination-image rajasthan"></div>
+                    <div class="destination-content">
+                        <h3>Rajasthan Royal Tour</h3>
+                        <p>Explore the land of kings with visits to Jaipur, Udaipur, and Jodhpur. Experience royal palaces, desert safaris, and rich cultural heritage.</p>
+                        <div class="destination-price">Starting from ₹25,000</div>
+                    </div>
+                </div>
+                <div class="destination-card fade-in" onclick="openBookingModal('Kerala Backwaters')">
+                    <div class="destination-image kerala"></div>
+                    <div class="destination-content">
+                        <h3>Kerala Backwaters</h3>
+                        <p>Cruise through serene backwaters, stay in traditional houseboats, and experience the natural beauty of God's Own Country.</p>
+                        <div class="destination-price">Starting from ₹18,000</div>
+                    </div>
+                </div>
+                <div class="destination-card fade-in" onclick="openBookingModal('Himalayan Adventure')">
+                    <div class="destination-image himalayan"></div>
+                    <div class="destination-content">
+                        <h3>Himalayan Adventure</h3>
+                        <p>Trek through breathtaking mountain trails, visit ancient monasteries, and witness stunning sunrise views over snow-capped peaks.</p>
+                        <div class="destination-price">Starting from ₹35,000</div>
+                    </div>
+                </div>
+                <div class="destination-card fade-in" onclick="openBookingModal('Golden Triangle')">
+                    <div class="destination-image golden-triangle"></div>
+                    <div class="destination-content">
+                        <h3>Golden Triangle</h3>
+                        <p>Discover India's most iconic destinations: Delhi, Agra, and Jaipur. Visit the Taj Mahal, Red Fort, and Amber Palace.</p>
+                        <div class="destination-price">Starting from ₹22,000</div>
+                    </div>
+                </div>
+                <div class="destination-card fade-in" onclick="openBookingModal('Goa Beach Paradise')">
+                    <div class="destination-image goa"></div>
+                    <div class="destination-content">
+                        <h3>Goa Beach Paradise</h3>
+                        <p>Relax on pristine beaches, enjoy water sports, explore Portuguese architecture, and experience vibrant nightlife.</p>
+                        <div class="destination-price">Starting from ₹15,000</div>
+                    </div>
+                </div>
+                <div class="destination-card fade-in" onclick="openBookingModal('South India Temple Trail')">
+                    <div class="destination-image temple"></div>
+                    <div class="destination-content">
+                        <h3>South India Temple Trail</h3>
+                        <p>Journey through ancient temples, experience classical dance performances, and savor authentic South Indian cuisine.</p>
+                        <div class="destination-price">Starting from ₹20,000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <i class="fas fa-plane"></i>
+                    <h3>Flight Booking</h3>
+                    <p>Book domestic and international flights at the best prices with flexible cancellation options.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-hotel"></i>
+                    <h3>Hotel Reservations</h3>
+                    <p>Choose from luxury resorts to budget accommodations with verified reviews and instant confirmation.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-car"></i>
+                    <h3>Transportation</h3>
+                    <p>Comfortable and reliable transportation options including private cars, buses, and train bookings.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-route"></i>
+                    <h3>Custom Itineraries</h3>
+                    <p>Personalized travel plans tailored to your preferences, budget, and travel style.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title fade-in">What Our Travelers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">EASYYATRA made our Rajasthan trip absolutely magical! The local guides were knowledgeable and the accommodations were perfect. Highly recommended!</p>
+                    <div class="testimonial-author">- Priya Sharma, Mumbai</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">The Kerala backwater experience was beyond our expectations. The houseboat was comfortable and the food was delicious. Thank you EASYYATRA!</p>
+                    <div class="testimonial-author">- Rajesh Kumar, Delhi</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">Professional service, great prices, and unforgettable memories. EASYYATRA is now our go-to travel partner for all our family trips.</p>
+                    <div class="testimonial-author">- Anita Patel, Bangalore</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EASYYATRA</h3>
+                    <p>Your trusted partner for exploring the incredible diversity of India. We create unforgettable travel experiences that showcase the best of our beautiful country.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Destinations</h3>
+                    <ul>
+                        <li><a href="#">Rajasthan</a></li>
+                        <li><a href="#">Kerala</a></li>
+                        <li><a href="#">Goa</a></li>
+                        <li><a href="#">Himachal Pradesh</a></li>
+                        <li><a href="#">Tamil Nadu</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@easyyatra.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra, India</li>
+                        <li><i class="fas fa-clock"></i> 24/7 Customer Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EASYYATRA. All rights reserved. | Privacy Policy | Terms & Conditions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal login-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <div class="login-header">
+                <h2 id="loginTitle">Welcome Back</h2>
+                <p>Sign in to access your account and manage bookings</p>
+            </div>
+            
+            <div class="form-toggle">
+                <button type="button" class="active" onclick="switchToLogin()">Login</button>
+                <button type="button" onclick="switchToSignup()">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+                <div class="forgot-password">
+                    <a href="#" onclick="showForgotPassword()">Forgot your password?</a>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form class="login-form" id="signupForm" onsubmit="handleSignup(event)" style="display: none;">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPhone">Phone Number</label>
+                    <input type="tel" id="signupPhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+
+            <div class="social-login">
+                <p>Or continue with</p>
+                <div class="social-buttons">
+                    <button class="social-btn google" onclick="loginWithGoogle()">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button class="social-btn facebook" onclick="loginWithFacebook()">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBookingModal()">&times;</span>
+            <h2 id="modalTitle">Book Your Trip</h2>
+            <form class="booking-form" onsubmit="submitBooking(event)">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="travelers">Number of Travelers</label>
+                    <select id="travelers" name="travelers" required>
+                        <option value="">Select...</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5+">5+ People</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="travelDate">Preferred Travel Date</label>
+                    <input type="date" id="travelDate" name="travelDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests (Optional)</label>
+                    <input type="text" id="specialRequests" name="specialRequests" placeholder="Any special requirements...">
+                </div>
+                <button type="submit" class="btn-primary">Book Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Search functionality
+        function searchDestination() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            if (searchTerm) {
+                // Simulate search results
+                alert(`Searching for destinations related to: "${searchTerm}"\n\nFound 12 amazing destinations! Scroll down to see our popular packages.`);
+                document.getElementById('destinations').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Please enter a destination to search for!');
+            }
+        }
+
+        // Language selector functionality
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            const selectedLang = this.value;
+            const translations = {
+                'hi': {
+                    title: 'भारत के छुपे हुए खजाने की खोज करें',
+                    subtitle: 'हमारे क्यूरेटेड ट्रैवल एक्सपीरियंस के साथ भारत की अविश्वसनीय विविधता का अनुभव करें।'
+                },
+                'ta': {
+                    title: 'இந்தியாவின் மறைந்த பொக்கிஷங்களைக் கண்டறியுங்கள்',
+                    subtitle: 'எங்கள் தேர்ந்தெடுக்கப்பட்ட பயண அனுபவங்களுடன் இந்தியாவின் நம்பமுடியாத பன்முகத்தன்மையை அனுபவியுங்கள்।'
+                },
+                'te': {
+                    title: 'భారతదేశం యొక్క దాచిన నిధులను కనుగొనండి',
+                    subtitle: 'మా క్యూరేటెడ్ ట్రావెల్ ఎక్స్‌పీరియన్స్‌తో భారతదేశం యొక్క అద్భుతమైన వైవిధ్యాన్ని అనుభవించండి।'
+                }
+            };
+
+            if (translations[selectedLang]) {
+                document.querySelector('.hero-content h1').textContent = translations[selectedLang].title;
+                document.querySelector('.hero-content p').textContent = translations[selectedLang].subtitle;
+            } else {
+                // Reset to English
+                document.querySelector('.hero-content h1').textContent = "Discover India's Hidden Treasures";
+                document.querySelector('.hero-content p').textContent = "Experience the incredible diversity of India with our curated travel experiences. From ancient temples to modern cities, from serene beaches to majestic mountains.";
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Booking modal functions
+        function openBookingModal(destination) {
+            document.getElementById('modalTitle').textContent = `Book ${destination}`;
+            document.getElementById('bookingModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function submitBooking(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const bookingData = {
+                fullName: formData.get('fullName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                travelers: formData.get('travelers'),
+                travelDate: formData.get('travelDate'),
+                specialRequests: formData.get('specialRequests')
+            };
+
+            // Simulate booking submission
+            alert(`Thank you ${bookingData.fullName}! Your booking request has been submitted successfully.\n\nBooking Details:\n- Travelers: ${bookingData.travelers}\n- Travel Date: ${bookingData.travelDate}\n- Email: ${bookingData.email}\n\nOur team will contact you within 24 hours to confirm your booking and provide payment details.`);
+            
+            closeBookingModal();
+            event.target.reset();
+        }
+
+        // Login Modal Functions
+        let currentUser = null;
+
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            switchToLogin();
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchToLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('loginTitle').textContent = 'Welcome Back';
+            
+            const toggleButtons = document.querySelectorAll('.form-toggle button');
+            toggleButtons[0].classList.add('active');
+            toggleButtons[1].classList.remove('active');
+        }
+
+        function switchToSignup() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'block';
+            document.getElementById('loginTitle').textContent = 'Create Account';
+            
+            const toggleButtons = document.querySelectorAll('.form-toggle button');
+            toggleButtons[0].classList.remove('active');
+            toggleButtons[1].classList.add('active');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const email = formData.get('email');
+            const password = formData.get('password');
+
+            // Simulate login validation
+            if (email && password) {
+                currentUser = {
+                    name: email.split('@')[0],
+                    email: email,
+                    avatar: email.charAt(0).toUpperCase()
+                };
+                
+                updateUserInterface();
+                closeLoginModal();
+                alert(`Welcome back, ${currentUser.name}! You are now logged in.`);
+                event.target.reset();
+            }
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirmPassword');
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Simulate account creation
+            currentUser = {
+                name: name,
+                email: email,
+                phone: phone,
+                avatar: name.charAt(0).toUpperCase()
+            };
+            
+            updateUserInterface();
+            closeLoginModal();
+            alert(`Welcome to EASYYATRA, ${currentUser.name}! Your account has been created successfully.`);
+            event.target.reset();
+        }
+
+        function updateUserInterface() {
+            const navLinks = document.querySelector('.nav-links');
+            const userMenu = document.getElementById('userMenu');
+            const userAvatar = document.getElementById('userAvatar');
+            
+            // Hide login link and show user menu
+            const loginLink = navLinks.querySelector('li:nth-last-child(2)');
+            loginLink.style.display = 'none';
+            userMenu.style.display = 'block';
+            userAvatar.textContent = currentUser.avatar;
+        }
+
+        function toggleUserDropdown() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        function showProfile() {
+            alert(`Profile Information:\n\nName: ${currentUser.name}\nEmail: ${currentUser.email}\n${currentUser.phone ? 'Phone: ' + currentUser.phone : ''}\n\nProfile management coming soon!`);
+            document.getElementById('userDropdown').classList.remove('show');
+        }
+
+        function showBookings() {
+            alert('My Bookings:\n\n• Rajasthan Royal Tour - March 15, 2024\n• Kerala Backwaters - April 22, 2024\n\nBooking history and management coming soon!');
+            document.getElementById('userDropdown').classList.remove('show');
+        }
+
+        function logout() {
+            currentUser = null;
+            const navLinks = document.querySelector('.nav-links');
+            const userMenu = document.getElementById('userMenu');
+            
+            // Show login link and hide user menu
+            const loginLink = navLinks.querySelector('li:nth-last-child(2)');
+            loginLink.style.display = 'block';
+            userMenu.style.display = 'none';
+            
+            document.getElementById('userDropdown').classList.remove('show');
+            alert('You have been logged out successfully!');
+        }
+
+        function showForgotPassword() {
+            const email = prompt('Please enter your email address to reset your password:');
+            if (email) {
+                alert(`Password reset instructions have been sent to ${email}. Please check your inbox.`);
+            }
+        }
+
+        function loginWithGoogle() {
+            // Simulate Google login
+            currentUser = {
+                name: 'Google User',
+                email: 'user@gmail.com',
+                avatar: 'G'
+            };
+            updateUserInterface();
+            closeLoginModal();
+            alert('Successfully logged in with Google!');
+        }
+
+        function loginWithFacebook() {
+            // Simulate Facebook login
+            currentUser = {
+                name: 'Facebook User',
+                email: 'user@facebook.com',
+                avatar: 'F'
+            };
+            updateUserInterface();
+            closeLoginModal();
+            alert('Successfully logged in with Facebook!');
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const bookingModal = document.getElementById('bookingModal');
+            const loginModal = document.getElementById('loginModal');
+            
+            if (event.target === bookingModal) {
+                closeBookingModal();
+            }
+            if (event.target === loginModal) {
+                closeLoginModal();
+            }
+        });
+
+        // Set minimum date to today for travel date input
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('travelDate').setAttribute('min', today);
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.destination-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(255, 119, 34, 0.95), rgba(255, 140, 66, 0.95))';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-saffron), #ff8c42)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9840da9ae5af3199',t:'MTc1ODcwMTkzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
